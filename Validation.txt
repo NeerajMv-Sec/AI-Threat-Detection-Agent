@@ -1,0 +1,27 @@
+AI MISTAKE: The AI tried to look for the word "DownloadString" in the raw Windows process log. This is an error because the attacker encoded the entire command into random Base64 characters. A real SIEM would never find that plain text word until it's decoded.
+
+SOLUTION: To dodge this problem we have to tune the sigma rule make it look for the stealth flags instead.
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains|all:
+      - '-w hidden'
+      - '-enc'
+  condition: selection
+
+And tune the KQL rule to make it look for the text after the windows decodes it.
+DeviceEvents
+| where ActionType == "PowerShellCommand" or AdditionalFields.EventId == 4104
+| where ScriptBlockText has_any ("DownloadString", "Invoke-Expression", "IEX")
+
+QnA
+
+Is the logic realistic?
+   Yes, catching hidden window execution combined with encoded commands is standard practice.
+
+Would this create too much noise?
+   No, because standard users rarely hide their PowerShell windows using -w hidden.
+
+Does it match the logs you actually have?
+   Yes, it perfectly aligns with our Sysmon log package.
