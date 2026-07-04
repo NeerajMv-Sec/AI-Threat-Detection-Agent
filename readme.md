@@ -6,7 +6,7 @@
 ## 1. Project Overview & Goal
 The objective of this project is to build an AI-powered detection engineering assistant. The system takes raw security alerts and accompanying multi-source event logs, automates the initial triage process, constructs an attack hypothesis, maps the malicious behavior to the MITRE ATT&CK framework, and suggests optimized detection queries (Sigma/KQL) to mitigate future risks.
 
-![Project Flowchart](images/flowchart.png)
+![Project Flowchart](Images/flowchart.png)
 
 ---
 
@@ -33,7 +33,7 @@ When the raw JSON context was ingested by the Gemini triage engine, the system a
     *   Defense Evasion: Obfuscated Files or Information: PowerShell Encoded Command (**T1027.001**)
     *   Command and Control: Ingress Tool Transfer (**T1105**)
 
-![AI Agent Terminal Output](images/agentcmd.png)
+![AI Agent Terminal Output](Images/Ai_agent.png)
 
 
 ---
@@ -47,7 +47,7 @@ To resolve this and eliminate catastrophic false-negative rates, the detection l
 1.  **Process Creation Baseline (Sigma):** Relies cleanly on process execution strings checking exclusively for the combination of high-evasion runtime parameters (`-w hidden`, `-enc`).
 2.  **Script Block Logging (KQL):** Shifts monitoring to post-decryption visibility fields (Windows Event ID 4104) to cleanly inspect the raw string variables after memory-decoding takes place.
 
-![Tuned KQL Rule](images/KQL tuned.png)
+![Tuned KQL Rule](Images/KQL Tuned.png)
 
 ---
 
