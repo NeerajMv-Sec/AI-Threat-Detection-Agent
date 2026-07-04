@@ -47,7 +47,7 @@ To resolve this and eliminate catastrophic false-negative rates, the detection l
 1.  **Process Creation Baseline (Sigma):** Relies cleanly on process execution strings checking exclusively for the combination of high-evasion runtime parameters (`-w hidden`, `-enc`).
 2.  **Script Block Logging (KQL):** Shifts monitoring to post-decryption visibility fields (Windows Event ID 4104) to cleanly inspect the raw string variables after memory-decoding takes place.
 
-![Tuned KQL Rule](Images/KQL Tuned.png)
+![Tuned KQL Rule](Images/KQL_Tuned.png)
 
 ---
 
