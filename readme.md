@@ -6,7 +6,7 @@
 ## 1. Project Overview & Goal
 The objective of this project is to build an AI-powered detection engineering assistant. The system takes raw security alerts and accompanying multi-source event logs, automates the initial triage process, constructs an attack hypothesis, maps the malicious behavior to the MITRE ATT&CK framework, and suggests optimized detection queries (Sigma/KQL) to mitigate future risks.
 
-![Project Flowchart](Images/flowchart.png)
+![Project Flowchart](Images/Flowchart.png)
 
 ---
 
