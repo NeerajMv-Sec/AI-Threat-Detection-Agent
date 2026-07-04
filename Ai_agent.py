@@ -3,7 +3,7 @@ import json
 from google import genai
 from google.genai import types
 
-# 1. Paste the enriched alert data from Step 1 & 2
+#ENRICHED ALERT DATA:
 alert_scenario_1 = {
     "alert_metadata": {
         "alert_id": "ALERT-2026-0042",
@@ -56,7 +56,7 @@ alert_scenario_1 = {
 # Make sure you have set your API key in your terminal: export GEMINI_API_KEY="your-key"
 client = genai.Client()
 
-# 3. Construct the Structured Triage Prompt (Following image_ab45ee.png)
+# 3. Construct the Structured Triage Prompt
 system_instruction = """
 You are an expert AI Detection Engineer and Tier 3 SOC Analyst. 
 Your task is to analyze an incoming security alert along with its associated raw logs and context.
